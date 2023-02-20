@@ -1,0 +1,6 @@
+sphinx
+furo 
+myst-parser
+sphinx-design
+sphinx-inline-tabs
+accessible-pygments
