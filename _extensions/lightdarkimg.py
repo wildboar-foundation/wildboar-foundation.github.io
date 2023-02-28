@@ -1,9 +1,5 @@
-from pathlib import Path
 import sys
-
-from sphinx.util.logging import getLogger
-
-logger = getLogger(__name__)
+from pathlib import Path
 
 
 def light_dark_paths(path: Path):

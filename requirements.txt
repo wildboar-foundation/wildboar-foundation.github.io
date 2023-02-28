@@ -4,3 +4,5 @@ myst-parser
 sphinx-design
 sphinx-inline-tabs
 accessible-pygments
+sphinx-toggleprompt
+matplotlib

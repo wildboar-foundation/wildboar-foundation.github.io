@@ -1,0 +1,54 @@
+name: Build documentation
+
+on: push
+
+jobs:
+  build_docs:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        branch: [main]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ matrix.branch }}
+
+      - uses: actions/setup-python@v4
+        name: Install Python
+        with:
+          python-version: "3.10"
+
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - uses: actions/checkout@v3
+        name: Checkout Wildboar
+        with:
+          repository: wildboar-foundation/wildboar
+          ref: master
+          path: './wildboar'
+
+      - name: Install extra dependencies
+        run: |
+          pip install networkx
+          pip install scikit-learn-extra
+
+      - name: Install current Wildboar version
+        run: pip install wildboar/.
+
+      - name: Build docmentation
+        run: |
+          mkdir html
+          python -I -m sphinx . html
+
+      - name: Deploy documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html
+          destination_dir: ${{ matrix.branch }}
