@@ -1,9 +1,9 @@
-from light_dark import mk_light_dark
-from wildboar.datasets import load_gun_point, load_dataset
-from wildboar.datasets.preprocess import minmax_scale, truncate
-from wildboar import iseos
-from matplotlib.cm import get_cmap
 import numpy as np
+from light_dark import mk_light_dark
+from matplotlib.cm import get_cmap
+from wildboar import iseos
+from wildboar.datasets import load_dataset, load_gun_point
+from wildboar.datasets.preprocess import minmax_scale, truncate
 
 
 @mk_light_dark("guide", "datasets", "repository", "preprocess", "minmax_scale.svg")
@@ -35,13 +35,17 @@ def plot_dim_len(x, fig, ax):
     "guide", "datasets", "repository", "preprocess", "no-truncate.svg", nrows=3
 )
 def gen_prerocess_no_truncate(fig, ax):
-    x, y = load_dataset("SpokenArabicDigits", repository="wildboar/ucrmts")
+    x, y = load_dataset(
+        "SpokenArabicDigits", repository="wildboar/ucrmts", progress=False
+    )
     x = x[0:25, :3, :]
     plot_dim_len(x, fig, ax)
 
 
 @mk_light_dark("guide", "datasets", "repository", "preprocess", "truncate.svg", nrows=3)
 def gen_prerocess_truncate(fig, ax):
-    x, y = load_dataset("SpokenArabicDigits", repository="wildboar/ucrmts")
+    x, y = load_dataset(
+        "SpokenArabicDigits", repository="wildboar/ucrmts", progress=False
+    )
     x = x[0:25, :3, :]
     plot_dim_len(truncate(x), fig, ax)

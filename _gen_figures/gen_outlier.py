@@ -84,7 +84,7 @@ def plot_projection(*, original_projection, outlier_projection, y_outlier, ax):
     "minority.svg",
 )
 def gen_minority(path):
-    x, y = load_dataset("CBF")
+    x, y = load_dataset("CBF", progress=False)
     x_outlier, y_outlier = minority_outliers(x, y, n_outliers=0.05)
     original_projection, outlier_projection = make_projection(x=x, x_outlier=x_outlier)
 
@@ -105,7 +105,7 @@ def gen_minority(path):
     "majority.svg",
 )
 def gen_majority(path):
-    x, y = load_dataset("CBF")
+    x, y = load_dataset("CBF", progress=False)
     x_outlier, y_outlier = majority_outliers(x, y, n_outliers=0.05)
     original_projection, outlier_projection = make_projection(x=x, x_outlier=x_outlier)
 
@@ -126,7 +126,7 @@ def gen_majority(path):
     "kmeans.svg",
 )
 def gen_kmeans(path):
-    x, y = load_dataset("CBF")
+    x, y = load_dataset("CBF", progress=False)
     x_outlier, y_outlier = kmeans_outliers(x, y, n_outliers=0.05)
     original_projection, outlier_projection = make_projection(x=x, x_outlier=x_outlier)
 
@@ -147,7 +147,7 @@ def gen_kmeans(path):
     "emmott.svg",
 )
 def gen_emmott(path):
-    x, y = load_dataset("CBF")
+    x, y = load_dataset("CBF", progress=False)
     x_outlier, y_outlier = emmott_outliers(
         x,
         y,
@@ -177,7 +177,7 @@ def gen_emmott(path):
     "emmott-hard.svg",
 )
 def gen_emmott_hard(path):
-    x, y = load_dataset("CBF")
+    x, y = load_dataset("CBF", progress=False)
     x_outlier, y_outlier = emmott_outliers(
         x,
         y,
