@@ -30,6 +30,7 @@ jobs:
         name: Checkout Wildboar
         with:
           repository: wildboar-foundation/wildboar
+          fetch-depth: 0
           ref: master
           path: './wildboar'
 
