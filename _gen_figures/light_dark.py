@@ -253,6 +253,8 @@ def if_not_exists(*args):
             path = Path(basepath).joinpath(*args)
             if exists(path) and not force:
                 return
+
+            path.parent.mkdir(parents=True, exist_ok=True)
             return f(path)
 
         return wrap
