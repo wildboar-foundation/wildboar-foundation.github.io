@@ -2,11 +2,9 @@ import matplotlib.pylab as plt
 import numpy as np
 from light_dark import if_not_exists, yield_and_save_plot
 from sklearn.decomposition import PCA
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import make_pipeline
 from wildboar.datasets import load_dataset
 from wildboar.datasets.outlier import (
-    density_outliers,
     emmott_outliers,
     kmeans_outliers,
     majority_outliers,

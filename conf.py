@@ -16,7 +16,6 @@ release = "main (dev)"
 extensions = [
     "sphinx.ext.intersphinx",
     "lightdarkimg",
-    "myst_parser",
     "sphinx.ext.mathjax",
     "sphinx_design",
     "sphinx_inline_tabs",
@@ -26,22 +25,18 @@ current_version = "master"
 intersphinx_mapping = {
     "wildboar": (f"https://docs.wildboar.dev/{current_version}", None),
     "sklearn": ("https://scikit-learn.org/stable/", None),
+    "numpy": ("https://numpy.org/doc/stable", None),
 }
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-# Markdown setting
-myst_heading_anchors = 3
-myst_enable_extensions = [
-    "dollarmath",
-    "substitution",
-    "deflist",
-]
-myst_substitutions = {
-    "doc_link": f"[text](https://docs.wildboar.dev/{current_version}/wildboar/target)",
-    "dataset_link": f"[text](https://datasets.wildboar.dev/{current_version}",
-}
+
+rst_prolog = """
+.. role:: python(code)
+  :language: python
+  :class: highlight
+"""
 
 # Setup syntax highlighting
 pygments_style = "github-light-colorblind"
